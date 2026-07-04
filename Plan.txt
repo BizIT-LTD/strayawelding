@@ -1,0 +1,186 @@
+You are connected to my website project folder.
+
+Website to review:
+https://strayawelding.com.au/
+
+Goal:
+Create a new modern static HTML/CSS/JS website for Straya Mobile Welding using the information, text, images, services, contact details, and portfolio content from the current live website.
+
+Important:
+- I do not need a backup of the old website.
+- Do not try to migrate WordPress.
+- Do not need WordPress theme/plugin files.
+- Just collect the public content and rebuild the website as clean static HTML.
+- This project will be pushed to GitHub and deployed through Hostinger.
+- Keep the code clean, simple, responsive, and easy to edit.
+
+Step 1 — Create this folder structure:
+source-content/
+assets/
+assets/images/
+css/
+js/
+
+Step 2 — Review and collect content from:
+https://strayawelding.com.au/
+https://strayawelding.com.au/about/
+https://strayawelding.com.au/services/
+https://strayawelding.com.au/portfolio/
+https://strayawelding.com.au/contact/
+
+Save the collected content into:
+source-content/content-summary.md
+
+Include:
+- page titles
+- headings
+- website text
+- phone number
+- email address
+- services
+- service areas
+- portfolio/project information
+- image URLs
+- any useful SEO text
+
+Step 3 — Download useful public images from the current website.
+Save them into:
+assets/images/
+
+Rename images clearly, for example:
+mobile-welding.jpg
+structural-steel.jpg
+pipe-welding.jpg
+fabrication.jpg
+project-gallery-1.jpg
+
+Step 4 — Build a new modern website with these pages:
+- index.html
+- about.html
+- services.html
+- portfolio.html
+- contact.html
+
+Design direction:
+- modern industrial look
+- premium mobile welding business feel
+- dark charcoal/navy background
+- yellow/orange welding accent
+- strong hero section
+- large call-to-action buttons
+- clean cards for services
+- responsive mobile-first layout
+- professional typography
+- fast loading
+- no unnecessary frameworks
+
+Homepage must include:
+- Hero section
+- Call Now button
+- Request a Quote button
+- About summary
+- Services overview
+- Why choose us
+- Portfolio/project preview
+- Service area section
+- Contact CTA
+
+Main message:
+24/7 Mobile Welding Services in Melbourne
+
+Business details:
+Business name: Straya Mobile Welding
+Phone: 0416 065 680
+Email: info@strayawelding.com.au
+Location/service area: Melbourne and Victoria
+
+Services to include:
+- Mobile welding
+- Structural steel welding
+- Pressure welding
+- Pipeline welding
+- Custom fabrication
+- Spool pipe fabrication
+- Repair work
+- Trucks, buckets, tippers, excavators, drilling rigs
+- Handrails, gates, railings and fencing
+- Steel, stainless steel and aluminium welding
+- Emergency 24/7 breakdown welding
+
+Portfolio page should include existing project categories/content from the old site.
+
+Step 5 — Contact form with Gmail SMTP:
+Create a working contact form on contact.html using PHP and PHPMailer.
+
+Important:
+- Do not use WordPress or WP Mail SMTP because this is a static HTML/PHP website.
+- Use PHPMailer with Gmail SMTP.
+- The form should send email FROM: straya.welding@gmail.com
+- The form should send email TO: info@strayawelding.com.au
+- Do not hard-code the Gmail password or app password inside contact.php.
+- Read SMTP credentials from config.php.
+- Add config.php and .env to .gitignore so secrets are never pushed to GitHub.
+
+Files to create:
+- contact.html
+- contact.php
+- config.example.php
+- .gitignore
+
+Form fields:
+- name
+- email
+- phone
+- service required
+- location/suburb
+- message
+
+SMTP settings:
+SMTP host: smtp.gmail.com
+SMTP port: 587
+SMTP security: STARTTLS
+SMTP username: straya.welding@gmail.com
+SMTP password: read from config.php
+From email: straya.welding@gmail.com
+From name: Straya Mobile Welding Website
+To email: info@strayawelding.com.au
+Reply-To: visitor's email address
+
+Security requirements:
+- Validate required fields
+- Sanitize all input
+- Use honeypot anti-spam field
+- Do not expose SMTP errors to website visitors
+- Show a clean success/error message on the website
+
+README.md must explain:
+- Gmail account must have 2-Step Verification enabled
+- Create a Gmail App Password for the website
+- Add the real credentials only on Hostinger, not GitHub
+
+Step 6 — SEO:
+Add:
+- title tags
+- meta descriptions
+- Open Graph tags
+- LocalBusiness/Welder schema
+- sitemap.xml
+- robots.txt
+
+Step 7 — Test:
+Check:
+- all pages open
+- menu works
+- mobile responsive design works
+- images load correctly
+- contact form fields validate
+- no broken internal links
+- no console errors
+
+Step 8 — Create README.md:
+Include:
+- project summary
+- how to edit the website
+- how to deploy via GitHub/Hostinger
+- how to configure contact form
+- list of pages created

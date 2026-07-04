@@ -1,0 +1,540 @@
+:root {
+  --bg: #08111d;
+  --bg-soft: #111c2b;
+  --panel: #162334;
+  --panel-2: #1d2b3c;
+  --text: #f5f7fb;
+  --muted: #b9c3d1;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #ffb02e;
+  --accent-2: #ff6a21;
+  --dark: #050a12;
+  --max: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(100% - 32px, var(--max));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(8, 17, 29, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.logo-box {
+  width: 104px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.menu a {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.menu a:hover,
+.menu a.active {
+  color: var(--accent);
+}
+
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 6px;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: var(--dark);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.btn-secondary {
+  color: var(--text);
+  border-color: rgba(255, 176, 46, 0.45);
+  background: rgba(255, 176, 46, 0.08);
+}
+
+.btn-dark {
+  color: var(--text);
+  background: var(--panel);
+  border-color: var(--line);
+}
+
+.hero {
+  min-height: 680px;
+  display: grid;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(5, 10, 18, 0.95), rgba(5, 10, 18, 0.7) 44%, rgba(5, 10, 18, 0.22)),
+    url("../assets/images/mobile-welding-01.jpg") center right / cover no-repeat;
+}
+
+.hero-content {
+  max-width: 720px;
+  padding: 86px 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 16px;
+  line-height: 1.08;
+}
+
+h1 {
+  font-size: clamp(42px, 7vw, 78px);
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 46px);
+}
+
+h3 {
+  font-size: 22px;
+}
+
+p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.lead {
+  font-size: 20px;
+  max-width: 680px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.section {
+  padding: 86px 0;
+}
+
+.section.alt {
+  background: var(--bg-soft);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 28px;
+  margin-bottom: 34px;
+}
+
+.section-head p {
+  max-width: 560px;
+}
+
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 26px;
+}
+
+.card strong,
+.stat strong {
+  color: var(--accent);
+}
+
+.service-card {
+  min-height: 210px;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.feature-list li {
+  padding-left: 28px;
+  position: relative;
+  color: var(--muted);
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.media-panel {
+  min-height: 360px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(255, 176, 46, 0.18), rgba(255, 106, 33, 0.08)),
+    url("../assets/images/fabrication-01.jpg") center / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.media-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(5, 10, 18, 0.72));
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.stat {
+  padding: 20px;
+  border-left: 3px solid var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.portfolio-card {
+  min-height: 190px;
+}
+
+.image-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.image-card a {
+  display: grid;
+  color: inherit;
+}
+
+.image-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--panel-2);
+}
+
+.image-card-body {
+  padding: 18px;
+}
+
+.image-card-body h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.gallery-section + .gallery-section {
+  margin-top: 54px;
+}
+
+.gallery-section h2 {
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.project-preview {
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-preview img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.project-preview div {
+  padding: 22px;
+}
+
+.cta {
+  background: linear-gradient(135deg, rgba(255, 176, 46, 0.17), rgba(255, 106, 33, 0.1)), var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero {
+  padding: 94px 0 70px;
+  background:
+    linear-gradient(90deg, rgba(5, 10, 18, 0.96), rgba(8, 17, 29, 0.86)),
+    url("../assets/images/structural-steel-01.jpg") center / cover no-repeat;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--text);
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #0c1725;
+  color: var(--text);
+  padding: 13px 14px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+}
+
+.notice {
+  padding: 14px 16px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  display: none;
+}
+
+.notice.show {
+  display: block;
+}
+
+.notice.success {
+  background: rgba(39, 174, 96, 0.16);
+  border: 1px solid rgba(39, 174, 96, 0.5);
+}
+
+.notice.error {
+  background: rgba(231, 76, 60, 0.16);
+  border: 1px solid rgba(231, 76, 60, 0.5);
+}
+
+.site-footer {
+  padding: 44px 0;
+  background: var(--dark);
+  border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 28px;
+}
+
+.footer-links {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 16px 24px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .menu a,
+  .menu .btn {
+    width: 100%;
+  }
+
+  .hero {
+    min-height: 620px;
+    background-position: center;
+  }
+
+  .section-head,
+  .split,
+  .grid-2,
+  .grid-3,
+  .gallery-grid,
+  .footer-grid,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    align-items: start;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: min(100% - 24px, var(--max));
+  }
+
+  .hero-content {
+    padding: 64px 0;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+}
