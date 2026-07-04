@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
 function redirect_with_status(string $status): void
@@ -10,8 +9,13 @@ function redirect_with_status(string $status): void
     exit;
 }
 
+function log_contact_error(string $message): void
+{
+    error_log('[Straya contact form] ' . $message);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirect_with_status('error');
+    redirect_with_status('direct');
 }
 
 if (!empty($_POST['website'] ?? '')) {
@@ -36,19 +40,64 @@ if ($visitorEmail === false) {
 
 $configPath = __DIR__ . '/config.php';
 if (!is_file($configPath)) {
-    error_log('Straya contact form missing config.php');
-    redirect_with_status('error');
+    log_contact_error('Missing config.php');
+    redirect_with_status('config');
 }
 
-$config = require $configPath;
+try {
+    $config = require $configPath;
+} catch (Throwable $exception) {
+    log_contact_error('Unable to load config.php: ' . $exception->getMessage());
+    redirect_with_status('config');
+}
+if (!is_array($config)) {
+    log_contact_error('config.php must return an array');
+    redirect_with_status('config');
+}
+
+$requiredConfig = [
+    'smtp_host',
+    'smtp_port',
+    'smtp_username',
+    'smtp_password',
+    'from_email',
+    'from_name',
+    'to_email',
+    'to_name',
+];
+
+foreach ($requiredConfig as $key) {
+    if (!array_key_exists($key, $config) || trim((string)$config[$key]) === '') {
+        log_contact_error('Missing config key: ' . $key);
+        redirect_with_status('config');
+    }
+}
 
 $autoload = __DIR__ . '/vendor/autoload.php';
 if (is_file($autoload)) {
-    require $autoload;
+    require_once $autoload;
 } else {
-    require __DIR__ . '/PHPMailer/src/Exception.php';
-    require __DIR__ . '/PHPMailer/src/PHPMailer.php';
-    require __DIR__ . '/PHPMailer/src/SMTP.php';
+    $phpmailerFiles = [
+        __DIR__ . '/PHPMailer/src/Exception.php',
+        __DIR__ . '/PHPMailer/src/PHPMailer.php',
+        __DIR__ . '/PHPMailer/src/SMTP.php',
+    ];
+
+    foreach ($phpmailerFiles as $file) {
+        if (!is_file($file)) {
+            log_contact_error('Missing PHPMailer dependency. Expected Composer vendor/autoload.php or PHPMailer/src files.');
+            redirect_with_status('dependency');
+        }
+    }
+
+    foreach ($phpmailerFiles as $file) {
+        require_once $file;
+    }
+}
+
+if (!class_exists(PHPMailer::class)) {
+    log_contact_error('PHPMailer class not available after dependency load');
+    redirect_with_status('dependency');
 }
 
 $body = '<h2>New Straya Mobile Welding enquiry</h2>'
@@ -80,8 +129,7 @@ try {
 
     $mail->send();
     redirect_with_status('success');
-} catch (Exception $exception) {
-    error_log('Straya contact form mail error: ' . $exception->getMessage());
+} catch (Throwable $exception) {
+    log_contact_error('Mail send failed: ' . $exception->getMessage());
     redirect_with_status('error');
 }
-

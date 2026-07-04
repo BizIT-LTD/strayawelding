@@ -1,6 +1,6 @@
 config.php
 .env
 vendor/
+PHPMailer/
 .DS_Store
 Thumbs.db
-

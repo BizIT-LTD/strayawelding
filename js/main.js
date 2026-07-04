@@ -22,5 +22,14 @@ if (notice) {
     notice.textContent = "Sorry, your enquiry could not be sent. Please call 0416 065 680 or email info@strayawelding.com.au.";
     notice.classList.add("show", "error");
   }
-}
 
+  if (status === "direct") {
+    notice.textContent = "Please use the contact form below to send an enquiry.";
+    notice.classList.add("show", "error");
+  }
+
+  if (status === "config" || status === "dependency") {
+    notice.textContent = "The contact form is not fully configured yet. Please call 0416 065 680 or email info@strayawelding.com.au.";
+    notice.classList.add("show", "error");
+  }
+}
