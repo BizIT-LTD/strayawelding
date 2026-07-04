@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 function redirect_with_status(string $status): void
 {
-    header('Location: contact.html?status=' . rawurlencode($status));
+    header('Location: /contact?status=' . rawurlencode($status));
     exit;
 }
 

@@ -1,0 +1,30 @@
+Options -MultiViews
+RewriteEngine On
+
+# Redirect public .html requests to clean URLs.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+about\.html[\s?] [NC]
+RewriteRule ^about\.html$ /about [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+services\.html[\s?] [NC]
+RewriteRule ^services\.html$ /services [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+portfolio\.html[\s?] [NC]
+RewriteRule ^portfolio\.html$ /portfolio [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+contact\.html[\s?] [NC]
+RewriteRule ^contact\.html$ /contact [R=301,L]
+
+# Serve real files and directories normally.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Map clean URLs to static HTML files.
+RewriteRule ^about/?$ about.html [L]
+RewriteRule ^services/?$ services.html [L]
+RewriteRule ^portfolio/?$ portfolio.html [L]
+RewriteRule ^contact/?$ contact.html [L]
+
