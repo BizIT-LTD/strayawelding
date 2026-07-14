@@ -486,10 +486,9 @@ textarea {
   border-top: 1px solid var(--line);
 }
 
-.contact-socials > strong {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 14px;
+.contact-socials h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
 }
 
 .contact-socials p {
